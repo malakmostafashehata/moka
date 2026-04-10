@@ -1,0 +1,149 @@
+:root {
+    --bg-color:#f7cfda;
+    --envelope-color: #f7cfda;
+    --flap-color: #ffffff;
+    --pocket-color: #f7cfda;
+    --letter-bg: #ffffff;
+}
+
+body {
+    background-image: url('mok.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    perspective: 1000px;
+}
+
+.envelope-wrapper {
+    position: relative;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite;
+}
+
+#envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: var(--envelope-color);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* The Letter Container */
+.letter {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 280px;
+    height: 180px;
+    background-color: var(--letter-bg);
+    z-index: 1;
+    transition: all 0.8s ease-in-out;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Photo & Text Header */
+.photo-header {
+    position: absolute;
+    top: -100px; /* Positions it above the main card */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    text-align: center;
+    z-index: 10;
+}
+
+.top-photo {
+    width: 120px;
+    height: 120px;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    object-fit: cover;
+    border-radius: 5px; /* Polaroid look */
+}
+
+/* Pixel Text Floating Above the Photo */
+.words {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* This centers it perfectly */
+    width: 100%;
+    text-align: center;
+    
+    /* Pixel Art Styling */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: #ffffff; /* Or your preferred pink #ffc5de */
+    
+    /* Layering */
+    z-index: 10; /* Ensures it is on top of the flap and pocket */
+    pointer-events: none; /* Allows the click to pass through to the envelope */
+    
+    /* Outline to make it pop */
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    transition: opacity 0.3s ease;
+}
+
+/* Hide the text when the envelope is open */
+.open .words {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.main-invite {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Flap & Pocket */
+.flap {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 110px solid var(--flap-color);
+    transform-origin: top;
+    z-index: 4;
+    transition: all 0.5s ease-in-out;
+}
+
+.pocket {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid var(--envelope-color);
+    border-right: 150px solid var(--envelope-color);
+    border-bottom: 100px solid var(--pocket-color);
+    z-index: 3;
+}
+
+/* Open Animation */
+.open .flap {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.open .letter {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(-160px) scale(1.1); 
+    z-index: 5;
+    height: 400px;
+}
+
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
