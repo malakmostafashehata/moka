@@ -1,8 +1,8 @@
 :root {
-    --bg-color:#6b2233;
-    --envelope-color:#6b2233;
-    --flap-color: #b4546a;
-    --pocket-color: #6b2233;
+    --bg-color:#ef5392;
+    --envelope-color:#ef5392;
+    --flap-color: #f7bad1;
+    --pocket-color: #ef5392;
     --letter-bg: #ffffff;
 }
 
@@ -80,7 +80,7 @@ body {
     /* Pixel Art Styling */
     font-family: 'Press Start 2P', cursive;
     font-size: 14px;
-    color: #b4546a; /* Or your preferred pink #ffc5de */
+    color: #f7bad1; /* Or your preferred pink #ffc5de */
     
     /* Layering */
     z-index: 10; /* Ensures it is on top of the flap and pocket */
